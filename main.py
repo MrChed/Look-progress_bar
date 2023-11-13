@@ -10,11 +10,9 @@ def search_library(library_name):
 
     # Проверка успешности запроса
     if response.status_code == 200:
-        # Извлечение информации о библиотеке из ответа
         library_info = response.json()
         return library_info
     else:
-        # В случае ошибки возвращаем None или более подходящее значение
         return None
 
 
