@@ -1,6 +1,6 @@
 ![png](https://github.com/MrChed/Look-progress_bar/assets/141160614/0518e45a-27b2-4188-aa22-51301bb0bdf0)
 
-#DEMO Look-progress_bar
+# DEMO Look-progress_bar
 
 Version: demo v1.0
 
