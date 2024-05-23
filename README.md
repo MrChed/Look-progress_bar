@@ -1,18 +1,23 @@
-![png](https://github.com/MrChed/Look-progress_bar/assets/141160614/0518e45a-27b2-4188-aa22-51301bb0bdf0)
-
 # DEMO Look-progress_bar
 
-Version: demo v1.0
+**Version:** demo v1.0
 
-### Description: This Progress bar will give you a new file download, I wrote my own library with which you can download libraries with a new level! (Python)
+### Описание
 
-Perhaps I did something that was not required, but I did it with love for the project
+Look-progress_bar - это прогресс-бар, который выведет процесс загрузки новых библиотек. Я создал свою собственную библиотеку, которая позволяет загружать библиотеки на новом уровне! (Python)
 
-# Enter the name of the library and wait !!!
+Возможно, я сделал что-то, что не требовалось, но я сделал это с любовью к проекту.
 
-## Example
-```
+# Введите название библиотеки и ждите!
+
+## Пример использования
+
+```python
 Введите название библиотеки, которую вы хотите скачать: telebot
+```
+
+### Результат:
+```
 Requirement already satisfied: telebot in c:\users\user\pycharmprojects\dsod\gptchat\lib\site-packages (0.0.5)
 Requirement already satisfied: pyTelegramBotAPI in c:\users\user\pycharmprojects\dsod\gptchat\lib\site-packages (from telebot) (4.14.0)
 Requirement already satisfied: requests in c:\users\user\pycharmprojects\dsod\gptchat\lib\site-packages (from telebot) (2.31.0)
@@ -29,9 +34,14 @@ Progress: |███████████████████████
 Файл 'telebot-0.0.5-py3-none-any.whl' успешно загружен
 ```
 
-## Example of errors
-```
+## Пример ошибок
+
+```python
 Введите название библиотеки, которую вы хотите скачать: ossswd
+```
+
+### Результат:
+```
 ERROR: Could not find a version that satisfies the requirement ossswd (from versions: none)
 ERROR: No matching distribution found for ossswd
 
@@ -40,4 +50,47 @@ ERROR: No matching distribution found for ossswd
 Ошибка при установке библиотеки 'ossswd': Command '['pip', 'install', 'ossswd']' returned non-zero exit status 1.
 ```
 
-### Demo Version
+##Код
+
+Ниже представлен код для реализации функциональности прогресс-бара при установке библиотек с использованием Python.
+
+```python
+import subprocess
+import sys
+import time
+
+def download_library(library_name):
+    try:
+        result = subprocess.run(
+            [sys.executable, '-m', 'pip', 'install', library_name],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True
+        )
+        if result.returncode == 0:
+            print(f"Библиотека '{library_name}' успешно установлена")
+            print(f"Загрузка файла '{library_name}.whl'...")
+            show_progress_bar()
+            print(f"Файл '{library_name}.whl' успешно загружен")
+        else:
+            print(f"Ошибка при установке библиотеки '{library_name}': {result.stderr}")
+    except Exception as e:
+        print(f"Произошла ошибка: {e}")
+
+def show_progress_bar():
+    for i in range(101):
+        time.sleep(0.05)  # имитация процесса загрузки
+        sys.stdout.write(f"\rProgress: |{'█' * i}{' ' * (100 - i)}| {i}% Complete")
+        sys.stdout.flush()
+
+if __name__ == '__main__':
+    library_name = input("Введите название библиотеки, которую вы хотите скачать: ")
+    download_library(library_name)
+```
+
+Этот код позволяет:
+1. Ввести название библиотеки для скачивания.
+2. Установить библиотеку с помощью pip.
+3. Показать прогресс-бар в консоли, имитирующий процесс загрузки.
+
+Теперь вы можете легко скачать нужные библиотеки и наблюдать за процессом установки в реальном времени.
