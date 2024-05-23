@@ -50,7 +50,7 @@ ERROR: No matching distribution found for ossswd
 Ошибка при установке библиотеки 'ossswd': Command '['pip', 'install', 'ossswd']' returned non-zero exit status 1.
 ```
 
-##Код
+## Код
 
 Ниже представлен код для реализации функциональности прогресс-бара при установке библиотек с использованием Python.
 
